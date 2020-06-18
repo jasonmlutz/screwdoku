@@ -23,8 +23,9 @@ class SudokuGame
 
       begin
         pos = parse_pos(gets.chomp)
-      rescue
-        puts "Invalid position entered (did you use a comma?)"
+      rescue ArgumentError => msg
+        puts "Invalid position entered"
+        puts msg
         puts ""
 
         pos = nil
@@ -84,5 +85,5 @@ class SudokuGame
 end
 
 
-game = SudokuGame.from_file("puzzles/sudoku1.txt")
+game = SudokuGame.from_file("puzzles/sudoku1-almost.txt")
 game.run
